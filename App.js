@@ -1,24 +1,45 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, TextInput} from 'react-native';
 
 export default function App() {
   const [name, setName] = useState('samba');
-  const [person, setPerson] = useState({name: 'mamadou samba', age: 30});
-
-  const clickHandler = () => {
-    setName('samba bhouria');
-    setPerson({name: 'alpha mamadou', age: 25});
-  };
+  const [age, setAge] = useState('30');
+  const [account, setAccount] = useState('00');
 
   return (
     <View style={styles.container}>
-      <Text>My name is {name}</Text>
-      <Text>
-        His name is {person.name} and his age is {person.age}
+
+      <Text>Enter name:</Text>
+      <TextInput
+        placeholder="e.g. Samba Diallo"
+        style={styles.input}
+        onChangeText={(value) => setName(value)}
+        multiline
+        numberOfLines={4}
+        maxLength={10}
+      />
+
+      <Text>Enter age:</Text>
+      <TextInput
+        placeholder="e.g. 99"
+        style={styles.input}
+        onChangeText={(value) => setAge(value)}
+        maxLength={4}
+      />
+
+      <Text>Enter account number:</Text>
+      <TextInput
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 100}}
+        placeholder="e.g. 1"
+        onChangeText={(value) => setAccount(value)}
+        maxLength={14}
+        keyboardType="number-pad"
+      />
+
+      <Text style={styles.result}>
+        name: {name}, age: {age} , account: {account}
       </Text>
-      <View style={styles.buttonContainer}>
-        <Button title="update state" onPress={clickHandler} />
-      </View>
     </View>
   );
 }
@@ -30,7 +51,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonContainer: {
-    marginTop: 20,
-  }
+  input: {
+    borderWidth: 1,
+    borderColor: '#777',
+    padding: 8,
+    margin: 10,
+    width: 200,
+  },
 });
