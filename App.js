@@ -1,44 +1,28 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 
 export default function App() {
-  const [name, setName] = useState('samba');
-  const [age, setAge] = useState('30');
-  const [account, setAccount] = useState('00');
+  const [students, setStudents] = useState([
+    {name: 'samba', key: '1'},
+    {name: 'alpha', key: '2'},
+    {name: 'amadou', key: '3'},
+    {name: 'abdoul', key: '4'},
+    {name: 'ibrahim', key: '5'},
+    {name: 'houssai', key: '6'},
+    {name: 'hassan', key: '7'},
+    {name: 'haroun', key: '8'},
+    {name: 'keita', key: '9'},
+  ]);
 
   return (
     <View style={styles.container}>
-      <Text>Enter name:</Text>
-      <TextInput
-        placeholder="e.g. Samba Diallo"
-        style={styles.input}
-        onChangeText={(value) => setName(value)}
-        multiline
-        numberOfLines={4}
-        maxLength={10}
-      />
-
-      <Text>Enter age:</Text>
-      <TextInput
-        placeholder="e.g. 99"
-        style={styles.input}
-        onChangeText={(value) => setAge(value)}
-        maxLength={4}
-      />
-
-      <Text>Enter account number:</Text>
-      <TextInput
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 100}}
-        placeholder="e.g. 1"
-        onChangeText={(value) => setAccount(value)}
-        maxLength={14}
-        keyboardType="number-pad"
-      />
-
-      <Text style={styles.result}>
-        name: {name}, age: {age} , account: {account}
-      </Text>
+      <ScrollView>
+        {students.map((item) => (
+          <View key={item.key}>
+            <Text style={styles.item}>{item.name}</Text>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -46,15 +30,16 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 40,
+    paddingHorizontal: 20,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#777',
-    padding: 8,
-    margin: 10,
-    width: 200,
+  item: {
+    flex: 1,
+    marginHorizontal: 10,
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: 'pink',
+    fontSize: 24,
   },
 });
