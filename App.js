@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
+import Header from './components/header';
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -7,13 +8,21 @@ export default function App() {
     {text: 'create my own apps', key: '2'},
     {text: 'play on the switch', key: '3'},
     {text: 'buy one billion dallar hous', key: '4'},
+    {text: 'learn knew techno', key: '5'},
+    {text: 'learner is my next todo', key: '6'},
   ]);
   return (
     <View style={styles.container}>
-      {/*Header*/}
-      <View style={styles.content}>{/*Forms*/}</View>
-
-      <View style={styles.list}>{/*Forms*/}</View>
+      <Header />
+      <View style={styles.content}>
+        {/* add todo form */}
+        <View style={styles.list}>
+          <FlatList
+            data={todos}
+            renderItem={({item}) => <Text>{item.text}</Text>}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -21,16 +30,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
-    paddingHorizontal: 20,
     backgroundColor: '#fff',
   },
-  item: {
-    flex: 1,
-    marginHorizontal: 10,
-    marginTop: 24,
-    padding: 30,
-    backgroundColor: 'pink',
-    fontSize: 24,
+  content: {
+    padding: 40,
+  },
+  list: {
+    marginTop: 20,
   },
 });
