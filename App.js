@@ -1,28 +1,34 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 
 export default function App() {
   const [students, setStudents] = useState([
-    {name: 'samba', key: '1'},
-    {name: 'alpha', key: '2'},
-    {name: 'amadou', key: '3'},
-    {name: 'abdoul', key: '4'},
-    {name: 'ibrahim', key: '5'},
-    {name: 'houssai', key: '6'},
-    {name: 'hassan', key: '7'},
-    {name: 'haroun', key: '8'},
-    {name: 'keita', key: '9'},
+    {name: 'samba', id: '1'},
+    {name: 'alpha', id: '2'},
+    {name: 'amadou', id: '3'},
+    {name: 'abdoul', id: '4'},
+    {name: 'ibrahim', id: '5'},
+    {name: 'houssai', id: '6'},
+    {name: 'hassan', id: '7'},
+    {name: 'haroun', id: '8'},
+    {name: 'keita', id: '9'},
   ]);
 
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <FlatList
+        numColumns={2}
+        keyExtractor={(item) => item.id}
+        data={students}
+        renderItem={({item}) => <Text style={styles.item}>{item.name}</Text>}
+      />
+      {/* <ScrollView>
         {students.map((item) => (
           <View key={item.key}>
             <Text style={styles.item}>{item.name}</Text>
           </View>
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
