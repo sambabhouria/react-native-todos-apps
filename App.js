@@ -1,44 +1,19 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export default function App() {
-  const [students, setStudents] = useState([
-    {name: 'samba', id: '1'},
-    {name: 'alpha', id: '2'},
-    {name: 'amadou', id: '3'},
-    {name: 'abdoul', id: '4'},
-    {name: 'ibrahim', id: '5'},
-    {name: 'houssai', id: '6'},
-    {name: 'hassan', id: '7'},
-    {name: 'haroun', id: '8'},
-    {name: 'keita', id: '9'},
+  const [todos, setTodos] = useState([
+    {text: 'buy lamborghini', key: '1'},
+    {text: 'create my own apps', key: '2'},
+    {text: 'play on the switch', key: '3'},
+    {text: 'buy one billion dallar hous', key: '4'},
   ]);
-
-  const pressHandler = (id) => {
-    console.log(id);
-    setStudents((prevStudent) => {
-      return prevStudent.filter((student) => student.id !== id);
-    });
-  };
   return (
     <View style={styles.container}>
-      <FlatList
-        numColumns={2}
-        keyExtractor={(item) => item.id}
-        data={students}
-        renderItem={({item}) => (
-          <TouchableOpacity onPress={() => pressHandler(item.id)}>
-            <Text style={styles.item}>{item.name}</Text>
-          </TouchableOpacity>
-        )}
-      />
-      {/* <ScrollView>
-        {students.map((item) => (
-          <View key={item.key}>
-            <Text style={styles.item}>{item.name}</Text>
-          </View>
-        ))}
-      </ScrollView> */}
+      {/*Header*/}
+      <View style={styles.content}>{/*Forms*/}</View>
+
+      <View style={styles.list}>{/*Forms*/}</View>
     </View>
   );
 }
