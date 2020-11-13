@@ -40,6 +40,7 @@ export default function App() {
     }
   };
   return (
+    // <Sandbox />
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <Header />
@@ -66,8 +67,12 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
+    //backgroundColor: 'grey',
+    flex: 1,
   },
   list: {
     marginTop: 20,
+    //backgroundColor: 'lightgrey',
+    flex: 1,
   },
 });
