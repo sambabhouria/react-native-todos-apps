@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, TextInput, Button} from 'react-native';
+import {Icon} from 'react-native-elements';
 
 export default function AddTodo({submitHandler}) {
   const [text, setText] = useState('');
@@ -21,7 +22,21 @@ export default function AddTodo({submitHandler}) {
         onChangeText={changeHandler}
         value={text}
       />
-      <Button color="coral" onPress={pressHandler} title="add todo" />
+      <View style={styles.item}>
+        <Icon
+          raised
+          name="plus-circle"
+          type="font-awesome"
+          color="#f50"
+          onPress={pressHandler}
+        />
+        {/* <Button
+          color="coral"
+          onPress={pressHandler}
+          title="add todo"
+          style={styles.itemButton}
+        /> */}
+      </View>
     </View>
   );
 }
@@ -33,5 +48,12 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
+  },
+  item: {
+    // flexDirection: 'row',
+    alignItems: 'center',
+  },
+  itemButton: {
+    marginLeft: 10,
   },
 });
